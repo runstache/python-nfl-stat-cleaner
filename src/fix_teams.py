@@ -19,7 +19,8 @@ for file in files:
       for play in bigplays:
         if not play['team'] in teams:
           teams.append(str(play['team']))
-      teams.remove(str(json_data['hometeam']))
+      if 'hometeam' in json_data:    
+        teams.remove(str(json_data['hometeam']))
       json_data['awayteam'] = teams[0]
       print(teams[0] + ' set as hometeam for ' + file)
 
@@ -31,7 +32,8 @@ for file in files:
       for play in bigplays:
         if not play['team'] in teams:
           teams.append(str(play['team']))
-      teams.remove(str(json_data['awayteam']))
+      if 'awayteam' in json_data:
+        teams.remove(str(json_data['awayteam']))
       json_data['hometeam'] = teams[0]
       print(teams[0] + ' set as awayteam for ' + file)
 
